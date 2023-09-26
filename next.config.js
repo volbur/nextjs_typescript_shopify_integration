@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const { withFrameworkConfig } = require("./framework/common/config")
+const { withFrameworkConfig } = require("./src/framework/common/config")
 
 module.exports = withFrameworkConfig({
   reactStrictMode: true,
