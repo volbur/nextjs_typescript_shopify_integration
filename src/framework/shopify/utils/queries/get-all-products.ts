@@ -43,4 +43,4 @@ const getAllProductsQuery = `
   }
 `
 
-export default getAllProductsQuery
+export { getAllProductsQuery }

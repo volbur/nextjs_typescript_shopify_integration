@@ -29,5 +29,5 @@ type FetcherParams = {
     return { data }
   }
   
-  export default fetchApi
+  export { fetchApi }
   
