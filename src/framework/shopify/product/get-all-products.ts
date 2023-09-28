@@ -7,9 +7,6 @@ import {
 import { ProductConnection } from "../schema"
 import { Product } from "@common/types/product"
 
-debugger
-console.log("*****");
-
 type ReturnType = {
   products: ProductConnection
 }
