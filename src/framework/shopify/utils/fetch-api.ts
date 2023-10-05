@@ -27,4 +27,4 @@ const fetchApi = async <T>({
   return { data }
 }
 
-export default fetchApi
+export { fetchApi }
