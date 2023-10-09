@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react"
+import s from "./Grid.module.css";
 
 interface GridProps {
     children: ReactNode;
@@ -7,7 +8,7 @@ interface GridProps {
 const Grid: FC<GridProps> = ({children}) => {
 
   return (
-    <div className="root-grid">
+    <div className={s.root}>
       {children}
     </div>
   )
