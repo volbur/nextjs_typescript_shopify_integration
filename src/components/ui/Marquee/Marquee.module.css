@@ -4,6 +4,10 @@
 .root {
     height: 320px;
   }
+
+.secondary {
+    @apply bg-white;
+}
   
   .container {
     @apply flex flex-row;

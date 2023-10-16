@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react"
 import s from "./Layout.module.css"
+import { Footer } from "@components/common";
 
 interface LayoutProps {
     children: ReactNode;
@@ -11,6 +12,7 @@ const Layout: FC<LayoutProps> = ({children}) => {
       <main className="fit">
         { children }
       </main>
+      <Footer/>
     </div>
   )
 }
