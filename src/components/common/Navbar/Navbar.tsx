@@ -4,6 +4,7 @@ import { FC } from "react"
 import { Container } from "@components/ui"
 import Link from "next/link"
 import s from "./Navbar.module.css"
+import Usernav from "../Usernav"
 
 const Navbar: FC = () => {
 
@@ -28,6 +29,9 @@ const Navbar: FC = () => {
               Shoes
             </Link>
           </nav>
+          <div className="flex flex-1 justify-end space-x-8">
+            <Usernav />
+          </div>
         </div>
       </div>
     </Container>
