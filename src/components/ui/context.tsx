@@ -1,6 +1,6 @@
-import { createContext, FC, useContext, ReactNode } from "react"
+import { createContext, FC, useContext, ReactNode, useState } from "react"
 
-const UIContext = createContext<{[key: string]: string}>({
+const UIContext = createContext<{[key: string]: any}>({
     uiState: "defaultState"
 })
 
@@ -9,11 +9,18 @@ interface LayoutProps {
 }
 
 export const UIProvider: FC<LayoutProps> = ({children}) => {
-return (
-    <UIContext.Provider value={{uiState: "someState"}}>
-    {children}
-    </UIContext.Provider>
-)
+    const [isSidebarOpen, setSidebarOpen] = useState(false)
+
+    const uiState = {
+        isSidebarOpen,
+        setSidebarOpen
+    }
+
+    return (
+        <UIContext.Provider value={uiState}>
+        {children}
+        </UIContext.Provider>
+    )
 }
 
 export const useUI = () => {
