@@ -1,7 +1,26 @@
 import { createContext, FC, useContext, ReactNode, useState } from "react"
 
-const UIContext = createContext<{[key: string]: any}>({
-    uiState: "defaultState"
+export interface StateModifiers {
+    openSidebar: () => void
+    closeSidebar: () => void
+}
+
+export interface StateValues {
+    isSidebarOpen: boolean
+}
+
+const stateModifiers = {
+    openSidebar: () => {},
+    closeSidebar: () => {}
+}
+
+const initialState = { isSidebarOpen: false }
+
+type State = StateValues & StateModifiers
+
+const UIContext = createContext<State>({
+    ...stateModifiers,
+    ...initialState
 })
 
 interface LayoutProps {
@@ -9,15 +28,17 @@ interface LayoutProps {
 }
 
 export const UIProvider: FC<LayoutProps> = ({children}) => {
-    const [isSidebarOpen, setSidebarOpen] = useState(false)
+    const openSidebar = () => alert("Opening Sidebar!")
+    const closeSidebar = () => alert("Closing Sidebar!")
 
-    const uiState = {
-        isSidebarOpen,
-        setSidebarOpen
+    const value = {
+        openSidebar,
+        closeSidebar,
+        isSidebarOpen: true
     }
 
     return (
-        <UIContext.Provider value={uiState}>
+        <UIContext.Provider value={value}>
         {children}
         </UIContext.Provider>
     )
