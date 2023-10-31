@@ -1,33 +1,33 @@
-import { createContext, ReactNode, useContext, useMemo } from "react";
-import { ApiConfig, ApiHooks } from "./types/api";
 
-interface ApiProviderProps {
-  children: ReactNode | ReactNode[]
-  config: ApiConfig,
-  hooks: ApiHooks
+
+export type ApiFetcherOptions = {
+    url: string
+    query: string
+    variables?: Variables
 }
 
-export const ApiContext = createContext({})
-export const ApiProvider = ({
-  children,
-  config,
-  hooks
-}: ApiProviderProps) => {
+export type Variables = { [key: string]: string | undefined }
 
-  const coreConfig = useMemo(() => {
-    return {
-      fetcher: config.fetch,
-      hooks
+export type ApiFetcherResults<T> = {
+    data: T
+}
+
+export interface ApiConfig {
+    apiUrl: string
+    fetch: ApiFetcher
+}
+
+export interface ApiHooks {
+    cart: {
+        useAddItem: any
     }
-  }, [config.fetch, hooks])
-
-  return (
-    <ApiContext.Provider value={coreConfig}>
-      { children }
-    </ApiContext.Provider>
-  )
 }
 
-export const useApiProvider = () => {
-  return useContext(ApiContext)
+export type ApiFetcher<T = any> = (
+    options: ApiFetcherOptions
+) => Promise<ApiFetcherResults<T>>
+
+export interface ApiProviderContext {
+    hooks: ApiHooks
+    fetcher: ApiFetcher
 }
