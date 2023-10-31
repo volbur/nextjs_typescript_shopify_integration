@@ -1,10 +1,9 @@
-const useAddItem = () => {
 
-    return (input: any) => {
-        return {
-            output: JSON.stringify(input) + "_MODIFIED"
-        }
-    }
+import { handler } from "@framework/cart/use-add-item"
+
+
+const useAddItem = () => {
+  return handler.useHook()
 }
 
 export default useAddItem
