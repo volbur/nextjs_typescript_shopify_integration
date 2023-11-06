@@ -23,7 +23,8 @@ export const useMutationHook = (
                 fetch: async (input: any) => {
                     return {
                         input,
-                        fetch: fetcher
+                        fetch: fetcher,
+                        options: hook.fetcherOptions
                     }
                 }
             })
